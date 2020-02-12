@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<bean id="mySetBean" class="ex.MySet">
+		<property name="set">
+			<!-- Set -->
+			<set> <!-- new HashSet() -->
+				<value>서울</value><!-- set.add("서울"); -->
+				<value>대전</value>
+				<value>대구</value>
+				<value>부산</value>
+			</set>
+		</property>
+	</bean>	
+	
+	<bean id="myListBean" class="ex.MyList">
+		<property name="list">
+			<list>
+				<value>사과</value>
+				<value>배</value>
+				<value>수박</value>
+				<value>참외</value>
+				<value>포도</value>
+			</list>
+		</property>
+	</bean>	
+	
+	<bean id="myMapBean" class="ex.MyMap">
+		<property name="map">
+			<map>
+				<entry key="hong" value="1111"/>
+				<entry key="kim" value="2222"/>
+				<entry key="park" value="3333"/>
+				<entry key="lee" value="4444"/>
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="myPropBean" class="ex.MyProp">
+		<property name="prop">
+			<props>
+				<prop key="driver">oracle.jdbc.oracleDriver</prop>
+				<prop key="url">jdbc:oracle:thin:@localhost:1521:xe</prop>
+				<prop key="user">c##spring</prop>
+				<prop key="password">spring</prop>
+			</props>
+		</property>
+	</bean>
+	
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
