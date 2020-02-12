@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="visit">
+	<select id="visit_list" resultType="vo.VisitVO">
+		select * from visit order by idx desc
+	</select>
+	
+	<insert id="visit_insert" parameterType="vo.VisitVO">
+		insert into visit values(seq_visit_idx.nextval,#{name},#{content},#{pwd},#{ip},sysdate)
+	</insert>
+	
+	<delete id="visit_delete" parameterType="java.lang.Integer">
+		delete from visit where idx = #{idx} <!-- 마지막에 ;은 입력하지 않는다 -->
+	</delete>
+	
+	<select id="visit_one" parameterType="java.lang.Integer" resultType="vo.VisitVO">
+		select * from visit where idx=#{idx}
+	</select>
+	
+	<update id="visit_update" parameterType="vo.VisitVO">
+		update visit set name = #{name},content=#{content},pwd=#{pwd},ip=#{ip},regdate=sysdate where idx=#{idx}
+	</update>
+</mapper>
+
+
+
+
+
+
