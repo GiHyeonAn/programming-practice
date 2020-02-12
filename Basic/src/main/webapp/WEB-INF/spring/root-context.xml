@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+		
+	<bean id="p1" class="vo.PersonVO">
+		<!-- 
+			property 태그는 클래스 내부에 있는 setter메소드를 호출하게 되는 태그이다
+			셋터인젝션
+		 -->
+		<property name="name" value="ddd"/>
+		<property name="age" value="30"/>
+		<property name="tel" value="010-0000-0000"/>
+	</bean>
+	
+	<bean id="p2" class="vo.PersonVO">
+		<!-- 생성자(constructor) 인젝션 -->
+		<constructor-arg value="aaa"/>
+		<constructor-arg value="28"/>
+		<constructor-arg value="010-2222-2222"/>
+		<!-- 순서가 안맞으면 error가 난다 -->
+		<!-- 순서가 안맞더라도 뒤에 index값을 지정하면 되지만 거의 쓰지 않는다
+		<constructor-arg value="aaa" index="0"/> -->
+	</bean>
+	
+	<bean id="nameBean" class="java.lang.String">
+		<constructor-arg value="홍길동"/>
+	</bean>
+	
+	<bean id="ageBean" class="java.lang.Integer">
+		<constructor-arg value="20"/>
+	</bean>
+	
+	<bean id="telBean" class="java.lang.String">
+		<constructor-arg value="010-1234-5678"/>
+	</bean>
+	
+	<!-- prototype은 spring에서 실행 시 F5를 누르면 <setname>등이 콘솔창에 뜬다 -->
+	<bean id="p3" class="vo.PersonVO" scope="prototype">
+		<property name="name" ref="nameBean"/>
+		<property name="age" ref="ageBean"/>
+		<property name="tel" ref="telBean"/>
+	</bean>
+</beans>
